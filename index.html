@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALO Enterprises | Global Foodstuff Trading</title>
+<!-- Primary Meta Tags -->
+    <title>HALO Enterprises | Global Foodstuff Trading</title>
+    <meta name="title" content="HALO Enterprises | Global Foodstuff Trading">
+    <meta name="description" content="A premier foodstuff trading firm based in the UAE, specializing in the global supply and brokerage of premium nuts, spices, and commodities. Built on a multi-generational legacy.">
+    <meta name="author" content="HALO Enterprises">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://preeminent-kringle-b320e8.netlify.app/">
+    <meta property="og:title" content="HALO Enterprises | Global Foodstuff Trading">
+    <meta property="og:description" content="Connecting world-class foodstuff suppliers with global markets. Specializing in cloves, brazil nuts, almonds, and more.">
+    <meta property="og:image" content="https://preeminent-kringle-b320e8.netlify.app/halo_logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="524">
+    <meta property="og:image:height" content="644">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://preeminent-kringle-b320e8.netlify.app/">
+    <meta property="twitter:title" content="HALO Enterprises | Global Foodstuff Trading">
+    <meta property="twitter:description" content="Connecting world-class foodstuff suppliers with global markets.">
+    <meta property="twitter:image" content="https://preeminent-kringle-b320e8.netlify.app/halo_logo.png">
+
+    <!-- Favicons -->
+    <!-- Use the SVG for the browser tab (it's sharper) -->
+    <link rel="icon" type="image/svg+xml" href="halo_logo.svg">
+    <!-- Fallback for older systems -->
+    <link rel="alternate icon" type="image/png" href="halo_logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        primary: { DEFAULT: "rgb(25, 77, 43)", foreground: "hsl(210 40% 98%)" },
+                        secondary: { DEFAULT: "rgb(204, 140, 51)", foreground: "hsl(222.2 47.4% 11.2%)" },
+                        muted: { DEFAULT: "hsl(210 40% 96.1%)", foreground: "hsl(215.4 16.3% 46.9%)" },
+                        accent: { DEFAULT: "hsl(210 40% 96.1%)", foreground: "hsl(222.2 47.4% 11.2%)" },
+                        sidebar: { DEFAULT: "hsl(210 40% 98%)" }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        html { scroll-behavior: smooth; }
+        .nut-container { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0; }
+        .nut { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #d4a373, #a98467); box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2); opacity: 0.4; animation: float 15s infinite ease-in-out; }
+        .nut-1 { width: 50px; height: 40px; left: 10%; top: -10%; animation-duration: 18s; }
+        .nut-2 { width: 35px; height: 35px; left: 35%; top: -10%; animation-duration: 14s; animation-delay: 2s; }
+        .nut-3 { width: 45px; height: 40px; left: 60%; top: -10%; animation-duration: 20s; animation-delay: 5s; }
+        .nut-4 { width: 30px; height: 35px; left: 85%; top: -10%; animation-duration: 16s; animation-delay: 1s; }
+        @keyframes float {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stagger-item { opacity: 0; }
+        .stagger-item.visible { animation: fadeInUp 0.6s ease-out forwards; }
+
+    </style>
+</head>
+<body class="font-sans antialiased text-foreground bg-background">
+    <div id="app" class="flex flex-col min-h-screen">
+        
+        <!-- NAVBAR -->
+        <nav class="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-md">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex h-28 items-center justify-between">
+                    <a href="#hero" @click.prevent="scrollTo('hero')" class="flex items-center gap-4 group">
+                        <!-- Custom Logo Image -->
+                        <img src="path4.png" alt="HALO Enterprises Logo" class="h-16 w-auto transition-transform group-hover:scale-105">
+                        
+                        <div class="flex flex-col leading-tight text-left">
+                            <span class="font-serif text-2xl md:text-3xl font-bold tracking-wide">HALO</span>
+                            <span class="text-xs font-semibold text-muted-foreground uppercase tracking-[0.2em]">Enterprises</span>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Nav -->
+                    <div class="hidden md:flex items-center gap-8">
+                        <a v-for="link in sectionLinks" :key="link.id" :href="'#' + link.id" @click.prevent="scrollTo(link.id)"
+                           class="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">
+                            {{ link.label }}
+                        </a>
+                        <button @click="scrollTo('contact')" class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90">
+                            Inquire Now
+                        </button>
+                    </div>
+
+                    <!-- Mobile Toggle -->
+                    <button class="md:hidden p-2" @click="isMobileMenuOpen = !isMobileMenuOpen">
+                        <i :data-lucide="isMobileMenuOpen ? 'x' : 'menu'"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div v-if="isMobileMenuOpen" class="md:hidden border-t border-border bg-background p-4 flex flex-col gap-2">
+                <a v-for="link in sectionLinks" :key="link.id" href="#" @click.prevent="scrollTo(link.id); isMobileMenuOpen = false"
+                   class="text-lg font-medium text-muted-foreground hover:text-primary p-2 text-left">
+                    {{ link.label }}
+                </a>
+                <button @click="scrollTo('contact'); isMobileMenuOpen = false" class="mt-2 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground">
+                    Inquire Now
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- HERO SECTION -->
+            <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#C2D6C9] to-background pt-20">
+                <!-- <div class="nut-container">
+                    <div class="nut nut-1"></div><div class="nut nut-2"></div>
+                    <div class="nut nut-3"></div><div class="nut nut-4"></div>
+                </div> -->
+
+                <div class="container relative z-10 mx-auto px-4 md:px-6 text-center">
+                    <div class="max-w-4xl mx-auto space-y-8 fade-in-up">
+                        <!-- <div class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm text-primary mb-2">
+                            <span class="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+                            Premium Foodstuff Trading &middot; United Arab Emirates
+                        </div> -->
+
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight tracking-tight">
+                            A Family Legacy in <br class="hidden md:block" />
+                            <span class="text-primary italic">Global Trade</span>
+                        </h1>
+
+                        <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+                            From almonds and walnuts to cloves and cranberries — HALO Enterprises connects the world's finest sources with the markets that demand them most.
+                        </p>
+
+                        <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <a href="#contact" @click.prevent="scrollTo('contact')" class="inline-flex h-14 items-center justify-center rounded-md bg-primary px-8 text-lg font-medium text-primary-foreground shadow-lg transition-transform hover:scale-105">
+                                Start an Inquiry <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
+                            </a>
+                            <a href="#about" @click.prevent="scrollTo('about')" class="inline-flex h-14 items-center justify-center rounded-md border border-input bg-background px-8 text-lg font-medium text-foreground shadow-sm transition-colors hover:bg-accent">
+                                Our Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                    <svg class="relative block w-full h-[50px] md:h-[100px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.29,200.9,109.8,241.6,104.29,281.8,92.51,321.39,56.44Z" fill="white"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- ABOUT SECTION -->
+            <section id="about" class="py-24 md:py-32 bg-background scroll-mt-20">
+                <div class="container mx-auto px-4 md:px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+                        <div class="lg:col-span-3 space-y-8 fade-in-up">
+                            <div class="space-y-4">
+                                <p class="text-sm font-bold text-primary uppercase tracking-[0.2em]">About Us</p>
+                                <h2 class="font-serif text-4xl md:text-5xl font-bold leading-tight">Generations of Trust. <br />A Modern UAE Presence.</h2>
+                                <div class="w-20 h-1 bg-secondary rounded-full"></div>
+                            </div>
+                            <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                                <p>Halo Enterprises is a premier foodstuff trading firm based in the UAE, built upon a multi-generational legacy of global excellence in the food industry. As part of a family heritage deeply rooted in the international trade, processing, and marketing of premium food products, we leverage decades of established relationships with a vast network of suppliers and buyers across the globe.</p>
+                                    <p>At Halo Enterprises, we pride ourselves on our ability to navigate complex market dynamics through both exclusive and non-exclusive arrangements. By combining traditional family values with a modern, strategic presence in the UAE, we provide our partners with unparalleled market access, transparency, and a commitment to quality that has been our family’s hallmark for generations. </p>
+                                 </div>
+                        </div>
+
+                        <div class="lg:col-span-2 space-y-6">
+                            <div v-for="(pillar, i) in pillars" :key="pillar.title" 
+                                 class="bg-sidebar border border-border rounded-2xl p-6 flex gap-5 items-start stagger-item visible"
+                                 :style="{ animationDelay: (i * 0.2) + 's' }">
+                                <div class="bg-primary/10 text-primary p-3 rounded-xl shrink-0">
+                                    <i :data-lucide="pillar.icon"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="font-serif text-lg font-bold">{{ pillar.title }}</h3>
+                                    <p class="text-sm text-muted-foreground leading-relaxed">{{ pillar.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES SECTION -->
+            <section id="services" class="py-24 bg-sidebar border-y border-border scroll-mt-20">
+                <div class="container mx-auto px-4 md:px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <p class="text-sm font-bold text-primary uppercase tracking-[0.2em]">Our Expertise</p>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold">Two Pillars. <span class="italic text-primary">One Standard.</span></h2>
+                        <p class="text-lg text-muted-foreground">From discrete brokerage to direct trade, our services are built around reliability and market intelligence.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div v-for="service in services" :key="service.title" class="bg-background border border-border rounded-2xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                            <div class="p-8 md:p-10 space-y-6">
+                                <div class="w-14 h-14 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
+                                    <i :data-lucide="service.icon" class="h-7 w-7"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <h3 class="font-serif text-2xl md:text-3xl font-bold">{{ service.title }}</h3>
+                                    <p class="text-base text-muted-foreground leading-relaxed">{{ service.summary }}</p>
+                                </div>
+                                <div class="pt-4 border-t border-border space-y-3">
+                                    <p class="text-xs font-bold text-primary uppercase tracking-wider">Current Portfolio</p>
+                                    <ul class="space-y-2">
+                                        <li v-for="b in service.bullets" :key="b.region" class="flex items-baseline justify-between gap-4 text-sm">
+                                            <span class="font-semibold">{{ b.region }}</span>
+                                            <span class="text-muted-foreground italic">{{ b.origin }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="text-sm text-muted-foreground italic pt-2">{{ service.markets }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="py-24 md:py-32 bg-sidebar border-t border-border scroll-mt-20">
+                <div class="container mx-auto px-4 md:px-6">
+                    <div class="text-center mb-16 space-y-4 max-w-3xl mx-auto">
+                        <p class="text-sm font-bold text-primary uppercase tracking-[0.2em]">Get in Touch</p>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold">Let's Build a Trade Partnership</h2>
+                        <p class="text-lg text-muted-foreground">Our trade desk is ready to listen to suppliers and importers alike.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+                        <div class="lg:col-span-5">
+                            <div class="lg:col-span-3">
+                                <div class="bg-background border border-border rounded-2xl p-8 md:p-10 shadow-lg">
+                                    <!-- Header with Logo -->
+                                    <div class="flex items-center gap-4 mb-8">
+                                        <img alt="HALO Enterprises" class="h-12 w-12 object-contain" src="path4.png">
+                                        <h3 class="font-serif text-2xl font-bold text-foreground">Send an Inquiry</h3>
+                                    </div>
+
+                                    <!-- Netlify Integration Attributes added here -->
+                                    <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+                                        <!-- Required for Netlify to identify the form -->
+                                        <input type="hidden" name="form-name" value="contact" />
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <!-- Full Name -->
+                                            <div class="space-y-2">
+                                                <label class="text-sm font-medium leading-none" for="name">Full Name</label>
+                                                <input class="flex h-11 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary md:text-sm" 
+                                                    placeholder="Your name" type="text" id="name" name="name" required>
+                                            </div>
+
+                                            <!-- Business Email -->
+                                            <div class="space-y-2">
+                                                <label class="text-sm font-medium leading-none" for="email">Business Email</label>
+                                                <input class="flex h-11 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary md:text-sm" 
+                                                    placeholder="you@company.com" type="email" id="email" name="email" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Company Name -->
+                                        <div class="space-y-2">
+                                            <label class="text-sm font-medium leading-none" for="company">Company Name</label>
+                                            <input class="flex h-11 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary md:text-sm" 
+                                                placeholder="Your company" type="text" id="company" name="company">
+                                        </div>
+
+                                        <!-- Message Area -->
+                                        <div class="space-y-2">
+                                            <label class="text-sm font-medium leading-none" for="message">How can we help?</label>
+                                            <textarea class="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary md:text-sm min-h-[160px] resize-none" 
+                                                    placeholder="Specify product, volume, origin, and destination market..." id="message" name="message" required></textarea>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <button class="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary bg-primary text-primary-foreground border border-primary min-h-12 rounded-md px-8 w-full text-base hover:bg-opacity-90 active:scale-[0.98]" 
+                                                type="submit">
+                                            Submit Inquiry
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-6">
+                            <div v-for="info in contactDetails" :key="info.label" class="bg-background border border-border rounded-2xl p-6 flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-full text-primary shrink-0">
+                                    <i :data-lucide="info.icon" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">{{ info.label }}</h4>
+                                    <p class="text-muted-foreground text-sm leading-relaxed" v-html="info.value"></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-sidebar border-t border-border mt-auto">
+            <div class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
+                    <div class="md:col-span-1 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <!-- Custom Logo Image -->
+                            <img src="halo_logo.svg" alt="HALO Enterprises Logo" class="h-12 w-auto">
+
+                            <div class="flex flex-col leading-tight">
+                                <span class="font-serif text-xl font-bold">HALO</span>
+                                <span class="text-xs font-semibold text-muted-foreground uppercase">Enterprises</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground leading-relaxed">A premier foodstuff trading firm based in the UAE, built on a multi-generational legacy.</p>
+                    </div>
+
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold mb-4">Navigate</h4>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li v-for="link in sectionLinks" :key="link.id">
+                                <a href="#" @click.prevent="scrollTo(link.id)" class="hover:text-primary transition-colors">{{ link.label }}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold mb-4">Portfolio</h4>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li>Cloves &middot; SE Asia & Africa</li>
+                            <li>Almonds & Cranberries &middot; USA</li>
+                            <li>Walnuts &middot; Chile</li>
+                            <li>Brazil Nuts &middot; South America</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-serif text-lg font-semibold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm text-muted-foreground">
+                            <li v-for="info in contactDetails" :key="info.label" class="flex items-start gap-3">
+                                <i :data-lucide="info.icon" class="h-4 w-4 text-primary shrink-0 mt-1"></i>
+                                <span v-html="info.value"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-12 border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+                    <p>&copy; {{ new Date().getFullYear() }} HALO Enterprises. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <div v-if="showToast" class="fixed bottom-6 right-6 bg-white border border-border p-4 rounded-lg shadow-2xl flex gap-3 items-center z-[100] fade-in-up">
+            <div class="bg-green-100 text-green-600 p-2 rounded-full"><i data-lucide="check" class="w-4 h-4"></i></div>
+            <div>
+                <p class="font-bold text-sm">Inquiry Received</p>
+                <p class="text-xs text-muted-foreground">Our trade desk will respond shortly.</p>
+            </div>
+            <button @click="showToast = false" class="ml-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const isMobileMenuOpen = ref(false);
+                const showToast = ref(false);
+                const form = reactive({ name: '', email: '', company: '', message: '' });
+
+                const sectionLinks = [
+                    { id: "about", label: "About" },
+                    { id: "services", label: "Services" },
+                    { id: "contact", label: "Contact" }
+                ];
+
+                const pillars = [
+                    { icon: 'globe-2', title: "Global Network", description: "Decades of established relationships with suppliers and buyers across four continents." },
+                    { icon: 'shield-check', title: "Family Heritage", description: "A multi-generational legacy of integrity and trust in international trade." },
+                    { icon: 'sparkles', title: "Premium Quality", description: "Sourcing the finest grade products with rigorous standards from generations of experience." }
+                ];
+
+                const services = [
+                    {
+                        title: "Strategic Brokerage",
+                        icon: 'network',
+                        summary: "We facilitate seamless connections between renowned global suppliers and key importers, navigating exclusive and non-exclusive arrangements with discretion.",
+                        bullets: [
+                            { region: "Cloves", origin: "Southeast Asia & Africa" },
+                            { region: "Cranberries & Almonds", origin: "United States" },
+                            { region: "Walnuts", origin: "Chile" },
+                        ],
+                        markets: "Major markets served: India & Egypt"
+                    },
+                    {
+                        title: "Specialized Trading",
+                        icon: 'ship',
+                        summary: "We engage in the direct trade of high-demand commodities, ensuring a reliable and transparent supply chain for our international partners.",
+                        bullets: [
+                            { region: "Brazil Nuts", origin: "South America" },
+                            { region: "Olives", origin: "Egypt" },
+                        ],
+                        markets: "End-to-end logistics & quality assurance"
+                    }
+                ];
+
+                const contactDetails = [
+                    { label: "Email", icon: "mail", value: "amatullah@halo-enterprises.com" },
+                ];
+
+                const scrollTo = (id) => {
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                };
+
+                const submitForm = () => {
+                    showToast.value = true;
+                    form.name = ''; form.email = ''; form.company = ''; form.message = '';
+                    setTimeout(() => { showToast.value = false; }, 5000);
+                };
+
+                onMounted(() => {
+                    lucide.createIcons();
+                    
+                });
+
+                return {
+                    isMobileMenuOpen, showToast, form, sectionLinks, 
+                    pillars, services, contactDetails, 
+                    scrollTo, submitForm
+                };
+            },
+            updated() {
+                lucide.createIcons();
+            }
+        }).mount('#app');
+    </script>
+    <style>
+                :root {
+    --hsf-default-button__background-color: rgb(25, 77, 43) !important;
+}
+                .hsfc-Form {
+            font-family: "Playfair Display" !important;
+        }
+    </style>
+</body>
+</html>
