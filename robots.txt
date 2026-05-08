@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Link to your sitemap
-Sitemap: https://preeminent-kringle-b320e8.netlify.app/sitemap.xml
+Sitemap: https://www.halo-enterprises.com/sitemap.xml
